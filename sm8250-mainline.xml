@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Samsung SM8250 mainline (r8q) trees and dependencies.
+     Drop this file into .repo/local_manifests/ of an official
+     PixelOS-AOSP/android_manifest (seventeen) checkout, then repo sync. -->
+<manifest>
+  <remote name="mainline" fetch="https://github.com/not-samsung-sm8250-mainline/" revision="seventeen" />
+  <remote name="me-cafebabe" fetch="https://github.com/me-cafebabe-aosp-mainline/" revision="lineage-24.0" />
+  <!-- lineageos remote comes from the base manifest (fetch=".." resolves to github.com root) -->
+
+  <!-- Samsung SM8250 mainline trees -->
+  <project path="device/samsung/sm8250-common" name="device_samsung_sm8250-common" remote="mainline" groups="mainline" />
+  <project path="device/samsung/r8q" name="device_samsung_r8q" remote="mainline" groups="mainline" />
+  <project path="kernel/samsung/sm8250-mainline" name="android_kernel_samsung_sm8250-mainline" remote="mainline" revision="r8q/7.2.0-not" groups="mainline" />
+  <project path="vendor/samsung/sm8250-common" name="vendor_samsung_sm8250-common" remote="mainline" groups="mainline" />
+  <project path="vendor/samsung/r8q" name="vendor_samsung_r8q" remote="mainline" groups="mainline" />
+
+  <!-- Samsung HALs referenced by the sm8250-common product (fingerprint, health, UDFPS) -->
+  <project path="hardware/samsung" name="hardware_samsung" remote="mainline" groups="mainline" />
+
+  <!-- SLSI NFC lib (nfc_nci_sec) for the r8q sec-sku NFC HAL -->
+  <project path="hardware/samsung_slsi/nfc" name="hardware_samsung_slsi_nfc" remote="mainline" groups="mainline" />
+
+  <!-- alsa-lib (libasound) for the mainline audio HAL in hardware/mainline/common -->
+  <project path="external/alsa-lib" name="android_external_alsa-lib" remote="me-cafebabe" groups="mainline" clone-depth="1" />
+  <project path="external/alsa-ucm-conf" name="android_external_alsa-ucm-conf" remote="me-cafebabe" groups="mainline" clone-depth="1" />
+
+  <!-- Mainline graphics stack (Mesa Freedreno/Turnip + minigbm + drm_hwcomposer) -->
+  <project path="device/mainline/common" name="LineageOS/android_device_mainline_common" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="external/drm_hwcomposer-upstream" name="LineageOS/android_external_drm_hwcomposer-upstream" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="external/libdisplay-info-upstream" name="LineageOS/android_external_libdisplay-info-upstream" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="external/mesa" name="LineageOS/android_external_mesa" revision="lineage-23.2" remote="github" groups="mainline" clone-depth="1" />
+  <project path="external/minigbm-upstream" name="LineageOS/android_external_minigbm-upstream" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="hardware/mainline/common" name="LineageOS/android_hardware_mainline_common" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="hardware/mainline/qcom" name="LineageOS/android_hardware_mainline_qcom" revision="lineage-24.0" remote="github" groups="mainline" clone-depth="1" />
+  <project path="prebuilts/mesa-build-dep" name="LineageOS/android_prebuilts_mesa-build-dep" revision="lineage-23.2" remote="github" groups="mainline" clone-depth="1" />
+</manifest>
